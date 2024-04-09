@@ -43,7 +43,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem "pry"
   gem "rspec-rails"
-  gem "factory_bot"
+  gem "factory_bot_rails"
   gem "faker"
   gem "simplecov"
   gem "shoulda-matchers"
