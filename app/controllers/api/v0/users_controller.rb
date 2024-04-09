@@ -1,7 +1,8 @@
 class Api::V0::UsersController < ApplicationController
 
   def destroy
-    render json: User.delete(params[:id]), status: 204
+    user = User.find(params[:id])
+    render json: user.destroy, status: 204
   end
 
 end
