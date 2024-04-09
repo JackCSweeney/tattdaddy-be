@@ -6,7 +6,7 @@ RSpec.describe Identity, type: :model do
   end
 
   describe 'relationships' do
-    it { should belong_to :artist }
-    it { should belong_to :user }
+    it { should have_many :artist_identities }
+    it { should have_many :user_identities }
   end
 end
