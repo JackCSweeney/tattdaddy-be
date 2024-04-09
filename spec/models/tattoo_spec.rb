@@ -12,6 +12,6 @@ RSpec.describe Tattoo, type: :model do
 
   describe 'relationships' do
     it { should belong_to :artist }
-    it { should have_many :users }
+    it { should have_many :user_tattoos }
   end
 end

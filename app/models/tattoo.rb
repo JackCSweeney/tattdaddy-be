@@ -5,6 +5,6 @@ class Tattoo < ApplicationRecord
 
 
   belongs_to :artist
-  has_many :users, dependent: :destroy
+  has_many :user_tattoos
 
 end
