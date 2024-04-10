@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v0 do
       resources :users, only: [:destroy, :create, :update, :show]
-      resources :artists
+      resources :artists do 
+        resources :tattoos, only: [:index], controller: "artist_tattoos"
+      end
+      resources :tattoos, only: [:show]
     end
   end
 end

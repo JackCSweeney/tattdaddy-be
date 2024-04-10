@@ -4,7 +4,6 @@ class Tattoo < ApplicationRecord
   validates :artist_id, presence: true
   validates :image_url, presence: true
 
-
   belongs_to :artist
   has_many :user_tattoos
 

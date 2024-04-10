@@ -14,4 +14,29 @@ RSpec.describe Artist, type: :model do
     it {should have_many :artist_identities}
     it {should have_many(:identities).through(:artist_identities)}
   end
+
+  before(:each) do
+    @artist_1 = create(:artist)
+    @artist_2 = create(:artist)
+
+    @tattoo_1 = Tattoo.create!({artist_id: @artist_1.id, price: 250, time_estimate: 90, image_url: "image/path"})
+    @tattoo_2 = Tattoo.create!({artist_id: @artist_1.id, price: 350, time_estimate: 100, image_url: "image/path"})
+    @tattoo_3 = Tattoo.create!({artist_id: @artist_2.id, price: 150, time_estimate: 60, image_url: "image/path"})
+  end
+
+  describe "instance methods" do 
+    describe "#all_artist_tatts" do 
+      it "gets all tattoos that are associated with an artist" do 
+        expect(@artist_1.tattoos.count).to eq(2)
+        expect(@artist_1.all_artist_tatts.count).to eq(2)
+        expect(@artist_1.all_artist_tatts.first).to eq(@tattoo_1)
+        expect(@artist_1.all_artist_tatts.all).not_to eq(@tattoo_3)
+
+        expect(@artist_2.tattoos.count).to eq(1)
+        expect(@artist_2.all_artist_tatts.count).to eq(1)
+        expect(@artist_2.all_artist_tatts.first).to eq(@tattoo_3)
+        expect(@artist_2.all_artist_tatts.all).not_to eq(@tattoo_1)
+      end
+    end
+  end
 end
