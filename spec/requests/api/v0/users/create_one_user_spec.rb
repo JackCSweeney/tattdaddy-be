@@ -4,7 +4,7 @@ RSpec.describe "Create User in DB via HTTP Request" do
   before(:each) do
     @user_data = {
       name: "Jack Sweeney",
-      location: "3405 Legend Dr. Los Angeles, CA 90034",
+      location: "3405 Legend Dr., Los Angeles, CA 90034",
       email: "test@email.com",
       search_radius: 25,
       password: "unreadable_hash"
@@ -12,7 +12,7 @@ RSpec.describe "Create User in DB via HTTP Request" do
 
     @bad_user_data = {
       name: "Jack Sweeney",
-      location: "3405 Legend Dr. Los Angeles, CA 90034",
+      location: "3405 Legend Dr., Los Angeles, CA 90034",
       email: "test@email.com",
       search_radius: 25
     }
