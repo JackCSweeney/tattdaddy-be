@@ -9,4 +9,8 @@ class Artist < ApplicationRecord
   validates_presence_of :password
 
   has_secure_password
+
+  def all_artist_tatts
+    tattoos
+  end
 end
