@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :users, only: [:destroy, :create, :update, :show] do
         resources :tattoos, only: [:index], controller: "user_tattoos"
       end
+      resources :user_tattoos, only: [:create]
       resources :artists do 
         resources :tattoos, only: [:index], controller: "artist_tattoos"
       end
