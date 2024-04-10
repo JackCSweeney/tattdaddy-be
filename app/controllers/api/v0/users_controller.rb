@@ -5,4 +5,15 @@ class Api::V0::UsersController < ApplicationController
     render json: user.destroy, status: 204
   end
 
+  def create
+    user = User.create!(user_params)
+    render json: UserSerializer.new(user), status: 201
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :location, :email, :search_radius, :password)
+  end
+
 end
