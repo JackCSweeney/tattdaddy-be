@@ -10,6 +10,8 @@ class Api::V0::UserTattoosController < ApplicationController
     render json: {message: "Tattoo successfully added to User"}
   end
 
+  
+
   private 
 
   def user_tattoo_params
