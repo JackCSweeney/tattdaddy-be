@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "endpoint api/v0/artists/:id" do
+RSpec.describe "endpoint patch api/v0/artists/:id" do
   describe "As a user" do
 
     before do
