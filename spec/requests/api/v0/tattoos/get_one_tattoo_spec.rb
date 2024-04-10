@@ -26,10 +26,10 @@ RSpec.describe "Get One Tattoo via GET HTTP Request" do
 
       attributes = tattoo_data[:attributes]
 
-      expect(attributes.price).to eq(@tattoo.price)
-      expect(attributes.artist_id).to eq(@tattoo.artist_id)
-      expect(attributes.time_estimate).to eq(@tattoo.time_estimate)
-      expect(attributes.image_url).to eq(@tattoo.image_url)
+      expect(attributes[:price]).to eq(@tattoo.price)
+      expect(attributes[:artist_id]).to eq(@tattoo.artist_id)
+      expect(attributes[:time_estimate]).to eq(@tattoo.time_estimate)
+      expect(attributes[:image_url]).to eq(@tattoo.image_url)
     end
   end
 
