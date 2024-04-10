@@ -7,10 +7,10 @@ class ApplicationController < ActionController::API
   end
 
   def invalid(exception)
-    if exception.message.include?("must exist")
-      render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404)).serialize_json, status: 404
-    else 
+    if exception.message.include?("taken")
       render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 422)).serialize_json, status: 422
+    else 
+      render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404)).serialize_json, status: 404
     end 
   end
 end
