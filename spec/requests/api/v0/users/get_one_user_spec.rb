@@ -10,7 +10,7 @@ RSpec.describe "Get One User via GET HTTP Request" do
 
   describe '#happy path' do
     it 'can return data from one user based on :id' do
-      get "/api/v0/users/:id", headers: @headers
+      get "/api/v0/users/#{@id}", headers: @headers
 
       expect(response).to be_successful
 
@@ -21,11 +21,10 @@ RSpec.describe "Get One User via GET HTTP Request" do
 
       attributes = response_data[:data][:attributes]
 
-      check_hash_structure(attributes, :name, String)
-      check_hash_structure(attributes, :email, String)
-      check_hash_structure(attributes, :location, String)
-      check_hash_structure(attributes, :password_digest, String)
-      check_hash_structure(attributes, :search_radius, Integer)
+      expect(attributes[:name]).to eq(@user.name)
+      expect(attributes[:email]).to eq(@user.email)
+      expect(attributes[:location]).to eq(@user.location)
+      expect(attributes[:search_radius]).to eq(@user.search_radius)
     end
   end
 

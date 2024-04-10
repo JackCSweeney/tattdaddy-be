@@ -16,6 +16,11 @@ class Api::V0::UsersController < ApplicationController
     render json: UserSerializer.new(user), status: 201 
   end
 
+  def show
+    user = User.find(params[:id])
+    render json: UserSerializer.new(user), status: :ok
+  end
+
   private
 
   def user_params
