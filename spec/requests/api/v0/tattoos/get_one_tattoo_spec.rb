@@ -11,7 +11,7 @@ RSpec.describe "Get One Tattoo via GET HTTP Request" do
 
   describe '#happy path' do
     it 'can make get request to endpoint and be returned all info from give tattoo' do
-      get "/api/v0/artists/#{@artist.id}/tattoos/#{@tattoo.id}", headers: @headers
+      get "/api/v0/tattoos/#{@tattoo.id}", headers: @headers
 
       expect(response).to be_successful
 
@@ -35,7 +35,7 @@ RSpec.describe "Get One Tattoo via GET HTTP Request" do
 
   describe '#sad path' do
     it 'responds with the correct error message if the tattoo does not exist' do
-      get "/api/v0/artists/#{@artist.id}/tattoos/123123123123"
+      get "/api/v0/tattoos/123123123123"
 
       expect(response).not_to be_successful
 
