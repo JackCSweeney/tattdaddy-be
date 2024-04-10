@@ -41,11 +41,8 @@ RSpec.describe "endpoint delete /api/v0/user_tattoos" do
 
         error_response = JSON.parse(response.body, symbolize_names: true)
 
-        expect(error_response).to have_key(:errors)
-        expect(error_response[:errors]).to be_a(Array)
-
-        expect(error_response[:errors].first).to have_key(:detail)
-        expect(error_response[:errors].first[:detail]).to eq("Association between Tattoo and User does not exist")
+        expect(error_response).to have_key(:message)
+        expect(error_response[:message]).to eq("Association between Tattoo and User does not exist")
       end
     end
   end 
