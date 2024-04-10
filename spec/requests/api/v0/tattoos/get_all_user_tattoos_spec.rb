@@ -32,7 +32,7 @@ RSpec.describe "Get all UserTattoos via GET HTTP Request" do
         
         attributes = tattoo[:attributes]
 
-        check_hash_structure(attributes, :artist_id, String)
+        check_hash_structure(attributes, :artist_id, Integer)
         check_hash_structure(attributes, :price, Integer)
         check_hash_structure(attributes, :time_estimate, Integer)
         check_hash_structure(attributes, :image_url, String)
