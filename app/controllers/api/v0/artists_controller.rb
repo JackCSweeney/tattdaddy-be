@@ -11,9 +11,13 @@ class Api::V0::ArtistsController < ApplicationController
 
   def update 
     artist = Artist.find(params[:id])
-    # require 'pry'; binding.pry
     artist.update!(artist_params)
     render json: ArtistSerializer.new(artist)
+  end
+
+  def destroy
+    artist = Artist.find(params[:id])
+    render json: artist.destroy, status: 204
   end
 
   private 
