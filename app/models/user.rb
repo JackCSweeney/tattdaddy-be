@@ -11,4 +11,8 @@ class User < ApplicationRecord
   validates_presence_of :password, on: :create
 
   has_secure_password
+
+  def find_user_tatts
+    tattoos
+  end
 end
