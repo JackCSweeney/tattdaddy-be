@@ -9,6 +9,13 @@ class Api::V0::ArtistsController < ApplicationController
     render json: ArtistSerializer.new(artist), status: :created
   end
 
+  def update 
+    artist = Artist.find(params[:id])
+    # require 'pry'; binding.pry
+    artist.update!(artist_params)
+    render json: ArtistSerializer.new(artist)
+  end
+
   private 
 
   def artist_params
