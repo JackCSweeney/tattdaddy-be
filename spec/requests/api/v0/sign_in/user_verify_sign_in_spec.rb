@@ -10,7 +10,7 @@ RSpec.describe "Verify User Info for Sign In via HTTP Request" do
         password: "Test",
         type: "Sign In as User"
       },
-      conroller: "sessions",
+      controller: "sessions",
       action: "create"
     }
 

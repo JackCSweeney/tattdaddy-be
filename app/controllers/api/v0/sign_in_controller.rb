@@ -1,20 +1,16 @@
 class Api::V0::SignInController < ApplicationController
 
-  def verfy_sign_in
+  def verify_sign_in
     if sign_in_params[:type].include?("User")
-      user = User.find_by(email: sign_in_params[:email])
-      if user.authenticate(sign_in_params[:password])
-        render json: {data: {id: user.id, type: "user"}}
-      else
-        render json: {error: "Invalid Parameters for Sign In"}, status: 422
-      end
+      login = User.find_by(email: sign_in_params[:email])
     else
-      artist = Artist.find_by(email: sign_in_params[:email])
-      if artist.authenticate(sign_in_params[:password])
-        render json: {data: {id: artist.id, type: "artist"}}
-      else
-        render json: {error: "Invalid Parameters for Sign In"}, status: 422
-      end
+      login = Artist.find_by(email: sign_in_params[:email])
+    end
+
+    if login.authenticate(sign_in_params[:password])
+      render json: {data: {id: login.id, type: login.class.to_s.downcase}}
+    else
+      render json: {error: "Invalid Parameters for Sign In"}, status: 422
     end
   end
 

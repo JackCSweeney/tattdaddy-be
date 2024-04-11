@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         resources :tattoos, only: [:index], controller: "artist_tattoos"
       end
       resources :tattoos, only: [:show]
-      post "/sign_in", to: "sign_in#verfy_sign_in"
+      post "/sign_in", to: "sign_in#verify_sign_in"
     end
   end
 end
