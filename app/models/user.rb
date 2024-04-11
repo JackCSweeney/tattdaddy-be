@@ -15,4 +15,8 @@ class User < ApplicationRecord
   def find_user_tatts
     tattoos
   end
+
+  def find_user_identities
+    identities
+  end
 end

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :v0 do
       resources :users, only: [:destroy, :create, :update, :show] do
         resources :tattoos, only: [:index], controller: "user_tattoos"
+        resources :identities, only: [:index], controller: "user_identities"
       end
       resources :user_tattoos, only: [:create]
       resources :artist_identities, only: [:create]
@@ -23,6 +24,9 @@ Rails.application.routes.draw do
       end
       resources :tattoos, only: [:show]
       post "/sign_in", to: "sign_in#verify_sign_in"
+
+      resources :user_identities, only: [:create]
+      delete "/user_identities", to: "user_identities#destroy"
     end
   end
 end
