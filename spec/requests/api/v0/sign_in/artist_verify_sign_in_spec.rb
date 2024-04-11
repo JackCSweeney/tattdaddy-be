@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe "Verify User Info for Sign In via HTTP Request" do
   before(:each) do
-    @user = create(:user, password: "Test")
+    @artist = create(:artist, password: "Test")
 
     @params_1 = {
       sign_in: {
-        email: @user.email,
+        email: @artist.email,
         password: "Test",
-        type: "Sign In as User"
+        type: "Sign In as Artist"
       },
       conroller: "sessions",
       action: "create"
@@ -16,9 +16,9 @@ RSpec.describe "Verify User Info for Sign In via HTTP Request" do
 
     @params_2 = {
       sign_in: {
-        email: @user.email,
+        email: @artist.email,
         password: "WrongPassword",
-        type: "Sign In as User"
+        type: "Sign In as Artist"
       },
       controller: "sessions",
       action: "create"
@@ -38,8 +38,8 @@ RSpec.describe "Verify User Info for Sign In via HTTP Request" do
       check_hash_structure(response_data, :data, Hash)
       check_hash_structure(response_data[:data], :id, Integer)
       check_hash_structure(response_data[:data], :type, String)
-      expect(response_data[:data][:id]).to eq(@user.id)
-      expect(response_data[:data][:type]).to eq("user")
+      expect(response_data[:data][:id]).to eq(@artist.id)
+      expect(response_data[:data][:type]).to eq("artist")
     end
   end
 
