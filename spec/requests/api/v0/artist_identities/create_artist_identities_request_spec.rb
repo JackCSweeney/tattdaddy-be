@@ -42,7 +42,7 @@ RSpec.describe "endpoint post /api/v0/artist_identities" do
         post "/api/v0/artist_identities", params: JSON.generate(artist_identity: @params), headers: @headers
         
         post "/api/v0/artist_identities", params: JSON.generate(artist_identity: @params), headers: @headers
-        # require 'pry'; binding.pry
+        
         expect(response).not_to be_successful
         expect(response.status).to eq(422)
 
