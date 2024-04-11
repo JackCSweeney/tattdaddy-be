@@ -36,6 +36,12 @@ RSpec.describe "endpoint get /api/v0/artists/:id/identities" do
 
         check_hash_structure(attributes, :identity_label, String)
       end 
+
+      describe "Sad Path" do 
+        it "will return the correct error message when given invalid artist id" do 
+          
+        end
+      end
     end
   end 
 end

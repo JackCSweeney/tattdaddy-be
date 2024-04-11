@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       
       resources :artists do 
         resources :tattoos, only: [:index], controller: "artist_tattoos"
+        resources :identities, only: [:index, :destroy], controller: "artist_identities"
       end
       resources :tattoos, only: [:show]
       post "/sign_in", to: "sign_in#verify_sign_in"
