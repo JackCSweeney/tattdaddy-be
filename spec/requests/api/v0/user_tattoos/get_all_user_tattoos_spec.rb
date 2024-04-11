@@ -10,14 +10,15 @@ RSpec.describe "Get all UserTattoos via GET HTTP Request" do
     @tattoo_2 = Tattoo.create!({artist_id: @artist.id, price: 350, time_estimate: 100, image_url: "image/path"})
     @tattoo_3 = Tattoo.create!({artist_id: @artist.id, price: 150, time_estimate: 60, image_url: "image/path"})
 
-    @user_tattoo_1 = UserTattoo.create!({tattoo_id: @tattoo_1.id, user_id: @user_1.id})
-    @user_tattoo_2 = UserTattoo.create!({tattoo_id: @tattoo_2.id, user_id: @user_1.id})
+    @user_tattoo_1 = UserTattoo.create!({tattoo_id: @tattoo_1.id, user_id: @user_1.id, status: 0})
+    @user_tattoo_2 = UserTattoo.create!({tattoo_id: @tattoo_2.id, user_id: @user_1.id, status: 0})
+    @user_tattoo_3 = UserTattoo.create!({tattoo_id: @tattoo_3.id, user_id: @user_1.id, status: 1})
 
     @headers = {"CONTENT_TYPE" => "application/json"}
   end
 
   describe '#happy path' do
-    it 'will return all tattoos that are associated with the given user' do
+    it 'will return all tattoos that are associated with the given user with a liked status' do
       get "/api/v0/users/#{@user_1.id}/tattoos", headers: @headers
 
       expect(response).to be_successful

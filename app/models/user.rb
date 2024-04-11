@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def find_user_tatts
-    tattoos
+    tattoos.where("status = 0")
   end
 
   def find_user_identities

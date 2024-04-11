@@ -29,8 +29,8 @@ RSpec.describe User, type: :model do
     @tattoo_2 = Tattoo.create!({artist_id: @artist.id, price: 350, time_estimate: 100, image_url: "image/path"})
     @tattoo_3 = Tattoo.create!({artist_id: @artist.id, price: 150, time_estimate: 60, image_url: "image/path"})
 
-    @user_tattoo_1 = UserTattoo.create!({tattoo_id: @tattoo_1.id, user_id: @user_1.id})
-    @user_tattoo_2 = UserTattoo.create!({tattoo_id: @tattoo_2.id, user_id: @user_1.id})
+    @user_tattoo_1 = UserTattoo.create!({tattoo_id: @tattoo_1.id, user_id: @user_1.id, status: 0})
+    @user_tattoo_2 = UserTattoo.create!({tattoo_id: @tattoo_2.id, user_id: @user_1.id, status: 0})
 
     @user_identity_1 = UserIdentity.create!({user_id: @user_1.id, identity_id: @identity_1.id})
     @user_identity_2 = UserIdentity.create!({user_id: @user_1.id, identity_id: @identity_2.id})

@@ -6,4 +6,6 @@ class UserTattoo < ApplicationRecord
   belongs_to :user
   belongs_to :tattoo
 
+  enum status: ["liked", "disliked"]
+
 end

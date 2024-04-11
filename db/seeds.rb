@@ -56,7 +56,7 @@ users = User.all
 
 # create user_tattoos
 users.each do |user|
-  UserTattoo.create!({user_id: user.id, tattoo_id: Tattoo.last.id})
+  UserTattoo.create!({user_id: user.id, tattoo_id: Tattoo.last.id, status: 0})
 end
 
 # create user_identities
