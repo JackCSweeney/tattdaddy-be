@@ -36,11 +36,20 @@ RSpec.describe "endpoint get /api/v0/artists/:id/identities" do
 
         check_hash_structure(attributes, :identity_label, String)
       end 
+    end
 
-      describe "Sad Path" do 
-        it "will return the correct error message when given invalid artist id" do 
-          
-        end
+    describe "Sad Path" do 
+      it "will return the correct error message when given invalid artist id" do 
+        get "/api/v0/artists/12345/identities", headers: @headers
+
+        expect(response).not_to be_successful
+  
+        response_data = JSON.parse(response.body, symbolize_names: true)
+  
+        check_hash_structure(response_data, :errors, Array)
+        expect(response_data[:errors].first).to be_a(Hash)
+        check_hash_structure(response_data[:errors].first, :detail, String)
+        expect(response_data[:errors].first[:detail]).to eq("Couldn't find Artist with 'id'=12345")
       end
     end
   end 
