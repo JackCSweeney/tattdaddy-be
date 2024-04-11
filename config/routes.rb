@@ -11,6 +11,9 @@ Rails.application.routes.draw do
         resources :tattoos, only: [:index], controller: "user_tattoos"
       end
       resources :user_tattoos, only: [:create]
+      resources :artist_identities, only: [:create]
+      
+      delete "/artist_identities", to: "artist_identities#destroy"
 
       delete "/user_tattoos", to: "user_tattoos#destroy"
       
