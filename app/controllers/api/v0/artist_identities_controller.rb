@@ -1,5 +1,10 @@
 class Api::V0::ArtistIdentitiesController < ApplicationController
 
+  def index 
+    identities = Artist.find(params[:artist_id]).find_artist_identities
+    render json: IdentitySerializer.new(identities)
+  end
+  
   def create
     artist_identity = ArtistIdentity.create!(artist_identity_params)
     render json: {message: "Identity successfully added to Artist"}

@@ -13,4 +13,8 @@ class Artist < ApplicationRecord
   def all_artist_tatts
     tattoos
   end
+
+  def find_artist_identities
+    identities
+  end
 end
