@@ -11,6 +11,7 @@ RSpec.describe UserTattoo, type: :model do
     it { should belong_to :tattoo }
   end
 
-  describe 'instance methods' do
+  describe 'enums' do
+    it { should define_enum_for(:status).with_values(["liked", "disliked"]) }
   end
 end
