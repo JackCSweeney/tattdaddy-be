@@ -61,7 +61,7 @@ RSpec.describe 'Create One UserIdentity via POST HTTP Request' do
 
     it 'returns an error message if that combination of user_identity already exists' do
       post "/api/v0/user_identities", headers: @headers, params: JSON.generate(user_identity: {user_id: 123123123123, identity_id: @identity.id})
-      
+
       post "/api/v0/user_identities", headers: @headers, params: JSON.generate(user_identity: {user_id: 123123123123, identity_id: @identity.id})
 
       expect(response).not_to be_successful
@@ -73,7 +73,6 @@ RSpec.describe 'Create One UserIdentity via POST HTTP Request' do
 
       expect(error_response[:errors].first).to have_key(:detail)
       expect(error_response[:errors].first[:detail]).to eq("Validation failed: User must exist")
-
     end
   end
 end

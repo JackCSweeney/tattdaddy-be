@@ -14,6 +14,11 @@ class Api::V0::UserIdentitiesController < ApplicationController
     end
   end
 
+  def index
+    identities = User.find(params[:user_id]).find_user_identities
+    render json: IdentitySerializer.new(identities)
+  end
+
 
   private
   def user_identity_params

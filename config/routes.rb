@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :v0 do
       resources :users, only: [:destroy, :create, :update, :show] do
         resources :tattoos, only: [:index], controller: "user_tattoos"
+        resources :identities, only: [:index], controller: "user_identities"
       end
       resources :user_tattoos, only: [:create]
 
