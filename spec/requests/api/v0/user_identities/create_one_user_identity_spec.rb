@@ -29,7 +29,7 @@ RSpec.describe 'Create One UserIdentity via POST HTTP Request' do
 
   describe '#happy path' do
     it 'will return a successful status and create the user_identity record' do
-      post "/api/v0/user_identities", headers: @headers, params: JSON.generate(user_identities: @params)
+      post "/api/v0/user_identities", headers: @headers, params: JSON.generate(user_identity: @params)
 
       expect(response).to be_successful
 
@@ -46,7 +46,7 @@ RSpec.describe 'Create One UserIdentity via POST HTTP Request' do
 
   describe '#sad path' do
     it 'returns an error message if user or identity does not exist' do
-      post "/api/v0/user_identities", headers: @headers, params: JSON.generate(user_identities: {user_id: 123123123123, identity_id: @identity_id})
+      post "/api/v0/user_identities", headers: @headers, params: JSON.generate(user_identity: {user_id: 123123123123, identity_id: @identity.id})
 
       expect(response).not_to be_successful
 

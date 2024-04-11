@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       end
       resources :tattoos, only: [:show]
       post "/sign_in", to: "sign_in#verify_sign_in"
+
+      resources :user_identities, only: [:create, :destroy]
     end
   end
 end
