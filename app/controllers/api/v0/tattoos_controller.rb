@@ -5,4 +5,18 @@ class Api::V0::TattoosController < ApplicationController
     render json: TattoosSerializer.new(tattoo)
   end
 
+  def create
+    tattoo = Tattoo.new(tattoo_params)
+    if tattoo.save 
+      render json: TattoosSerializer.new(tattoo)
+    else
+      render json: {error: "Tattoo could not be uploaded"}, status: 422
+    end
+  end
+
+  private
+
+  def tattoo_params
+    params.permit(:"artist_id", :"image_url", :"price", :"time_estimate")
+  end
 end
