@@ -28,7 +28,7 @@ RSpec.describe 'Get All Identities via GET HTTP Request' do
       response_data = JSON.parse(response.body, symbolize_names: true)
 
       check_hash_structure(response_data, :data, Array)
-      expect(response[:data].first).to be_a(Hash)
+      expect(response_data[:data].first).to be_a(Hash)
 
       data = response_data[:data]
 
