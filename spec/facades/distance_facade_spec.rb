@@ -4,7 +4,7 @@ RSpec.describe DistanceFacade do
   describe "As a User" do
 
     before do
-        url_path
+      json_response = 
     end
 
     it "" do
