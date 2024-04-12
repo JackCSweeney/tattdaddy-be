@@ -23,7 +23,9 @@ Rails.application.routes.draw do
         resources :identities, only: [:index, :destroy], controller: "artist_identities"
       end
       resources :tattoos, only: [:show, :create]
+
       post "/sign_in", to: "sign_in#verify_sign_in"
+      delete "/sign_out", to: "sign_out#sign_out"
 
       resources :user_identities, only: [:create]
       delete "/user_identities", to: "user_identities#destroy"
