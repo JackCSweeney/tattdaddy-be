@@ -15,7 +15,6 @@ RSpec.describe DistanceFacade do
         to_return(status: 200, body: json_response)
 
       response_data = DistanceFacade.new(@user).get_artists_within_distance(@user)
-        # require 'pry'; binding.pry
     end
   end
 end
