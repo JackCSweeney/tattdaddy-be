@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
       delete "/user_tattoos", to: "user_tattoos#destroy"
       
+      get "/distance_search", to: "distance_search#search"
+      
       resources :artists do 
         resources :tattoos, only: [:index], controller: "artist_tattoos"
         resources :identities, only: [:index, :destroy], controller: "artist_identities"
