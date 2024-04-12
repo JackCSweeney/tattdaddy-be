@@ -81,3 +81,14 @@ def check_hash_structure(object, key, data_type)
   expect(object).to have_key(key)
   expect(object[key]).to be_a(data_type)
 end
+
+def json_stub(fixture_file, endpoint)
+  json_response = File.read("#{fixture_file}")
+      stub_request(:get, "#{endpoint}").
+        with(
+          query: {
+            "api_key" => Rails.application.credentials.google_distance_matrix[:key]
+          }
+        ).
+        to_return(status: 200, body: json_response)
+end
