@@ -7,10 +7,13 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v0 do
+      resources :identities, only: [:index]
+
       resources :users, only: [:destroy, :create, :update, :show] do
         resources :tattoos, only: [:index], controller: "user_tattoos"
         resources :identities, only: [:index], controller: "user_identities"
       end
+
       resources :user_tattoos, only: [:create]
       resources :artist_identities, only: [:create]
       
@@ -24,8 +27,11 @@ Rails.application.routes.draw do
         resources :tattoos, only: [:index], controller: "artist_tattoos"
         resources :identities, only: [:index, :destroy], controller: "artist_identities"
       end
+
       resources :tattoos, only: [:show, :create]
+
       post "/sign_in", to: "sign_in#verify_sign_in"
+      delete "/sign_out", to: "sign_out#sign_out"
 
       resources :user_identities, only: [:create]
       delete "/user_identities", to: "user_identities#destroy"
