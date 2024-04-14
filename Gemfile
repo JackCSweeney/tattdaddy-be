@@ -38,6 +38,10 @@ gem "bootsnap", require: false
 gem "faraday"
 gem "jsonapi-serializer"
 gem 'aws-sdk-s3', '~> 1'
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
+gem "dotenv-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
