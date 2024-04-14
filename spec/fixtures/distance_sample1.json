@@ -1,6 +1,6 @@
 {
   "destination_addresses": [
-      "73 Vía Jodi, Gustine, CA 95322, USA"
+      "1900 S Central Ave, Los Angeles, CA 90011, USA"
   ],
   "origin_addresses": [
       "22012 G St, Crows Landing, CA 95313, USA"
@@ -10,12 +10,12 @@
           "elements": [
               {
                   "distance": {
-                      "text": "10.8 mi",
-                      "value": 17356
+                      "text": "302 mi",
+                      "value": 486188
                   },
                   "duration": {
-                      "text": "16 mins",
-                      "value": 973
+                      "text": "4 hours 42 mins",
+                      "value": 16910
                   },
                   "status": "OK"
               }

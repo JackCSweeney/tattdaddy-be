@@ -7,9 +7,16 @@ class DistanceFacade
   end
 
   def get_artists_within_distance(user)
-    # grab search radius and location from user
+    
     service = DistanceService.new 
-    service.all_artists_within_radius(@location, @search_radius)
-    # require 'pry'; binding.pry
+    artists = service.all_artists_within_radius(@location, @search_radius)
+      matched_artists = Artist.joins(artist_identities: :identity)
+                               .where(id: artists.map(&:id)) 
+                               .where(artist_identities: { identity_id: user.identity_ids })
+                               .distinct
+    
+      matched_artists
+    
+    
   end
 end
