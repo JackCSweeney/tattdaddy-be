@@ -19,6 +19,7 @@ RSpec.describe DistanceFacade do
         i.each do |identity|
           Identity.create!({identity_label: identity})
         end
+        @api_key = Rails.application.credentials.google_distance_matrix[:api_key]
     end
     
     it "returns filtered artists within search radius" do
@@ -31,7 +32,8 @@ RSpec.describe DistanceFacade do
     
       # this should be the correct endpoint needed from: https://developers.google.com/maps/documentation/distance-matrix/start
       json_response = File.read("spec/fixtures/distance_sample.json")
-      stub_request(:get, "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=73%20Via%20Jodi%20Gustine,%20CA%2095322,%20USA&key=AIzaSyCLnZRm2mUkbaG0xplrrNY-EBeXMVfamnk&origins=22012%20G%20st%20Crows%20Landing,%20CA%2095313,%20USA&units=imperial").
+      
+      stub_request(:get, "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=73%20Via%20Jodi%20Gustine,%20CA%2095322,%20USA&key=#{@api_key}&origins=22012%20G%20st%20Crows%20Landing,%20CA%2095313,%20USA&units=imperial").
          with(
            headers: {
           'Accept'=>'*/*',
@@ -57,7 +59,7 @@ RSpec.describe DistanceFacade do
     
       # this should be the correct endpoint needed from: https://developers.google.com/maps/documentation/distance-matrix/start
       json_response = File.read("spec/fixtures/distance_sample.json")
-      stub_request(:get, "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=73%20Via%20Jodi%20Gustine,%20CA%2095322,%20USA&key=AIzaSyCLnZRm2mUkbaG0xplrrNY-EBeXMVfamnk&origins=22012%20G%20st%20Crows%20Landing,%20CA%2095313,%20USA&units=imperial").
+      stub_request(:get, "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=73%20Via%20Jodi%20Gustine,%20CA%2095322,%20USA&key=#{@api_key}&origins=22012%20G%20st%20Crows%20Landing,%20CA%2095313,%20USA&units=imperial").
          with(
            headers: {
           'Accept'=>'*/*',
@@ -76,7 +78,7 @@ RSpec.describe DistanceFacade do
       @artist2 = create(:artist, location: "1900 S Central Ave Los Angeles, CA 90011, USA")
       
       json_response = File.read("spec/fixtures/distance_sample1.json")
-        stub_request(:get, "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=1900%20S%20Central%20Ave%20Los%20Angeles,%20CA%2090011,%20USA&key=AIzaSyCLnZRm2mUkbaG0xplrrNY-EBeXMVfamnk&origins=22012%20G%20st%20Crows%20Landing,%20CA%2095313,%20USA&units=imperial").
+        stub_request(:get, "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=1900%20S%20Central%20Ave%20Los%20Angeles,%20CA%2090011,%20USA&key=#{@api_key}&origins=22012%20G%20st%20Crows%20Landing,%20CA%2095313,%20USA&units=imperial").
          with(
            headers: {
           'Accept'=>'*/*',
