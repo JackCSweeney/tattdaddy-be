@@ -14,6 +14,11 @@ class Api::V0::TattoosController < ApplicationController
     end
   end
 
+  def destroy
+    tattoo = Tattoo.find(params[:id])
+    render json: tattoo.destroy, status: 204
+  end
+
   private
 
   def tattoo_params
