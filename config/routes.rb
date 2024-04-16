@@ -21,6 +21,10 @@ Rails.application.routes.draw do
 
       delete "/user_tattoos", to: "user_tattoos#destroy"
       
+      get '/auth/:provider/callback', to: 'sessions#create'
+      get '/auth/google_oauth2', to: 'sessions#google_oauth2'
+      get '/auth/google_oauth2/callback', to: 'sessions#google_oauth2_callback'
+
       resources :artists do 
         resources :tattoos, only: [:index], controller: "artist_tattoos"
         resources :identities, only: [:index, :destroy], controller: "artist_identities"
