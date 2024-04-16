@@ -6,11 +6,12 @@ RSpec.describe 'Create New Tattoo via POST HTTP Request' do
 
     @params = {price: 90, time_estimate: 120, artist_id: @artist.id, image_url: "test/url/path"}
     @bad_params = {price: 90, time_estimate: 120, artist_id: @artist.id}
+    @headers = {"CONTENT_TYPE" => "application/json"}
   end
 
   describe '#happy path' do
     it 'can create a new tattoo record with all attributes via post http request' do
-      post "/api/v0/tattoos", params: @params
+      post "/api/v0/tattoos", headers: @headers, params: JSON.generate(@params)
 
       expect(response).to be_successful
 
@@ -29,7 +30,7 @@ RSpec.describe 'Create New Tattoo via POST HTTP Request' do
 
   describe '#sad path' do
     it 'returns the correct resopnse when uploading a tattoo with incorrect parameters' do
-      post "/api/v0/tattoos", params: @bad_params
+      post "/api/v0/tattoos", headers: @headers, params: JSON.generate(@bad_params)
 
       expect(response).not_to be_successful
 
