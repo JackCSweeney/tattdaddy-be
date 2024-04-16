@@ -27,9 +27,9 @@ RSpec.describe DistanceService do
       artist1 = create(:artist, location: artist1_location)
       artist2 = create(:artist, location: artist2_location)
 
-      
+      filtered_artists = Artist.all
       service = DistanceService.new
-      artists_within_radius = service.all_artists_within_radius(user_location, search_radius)
+      artists_within_radius = service.all_artists_within_radius(user_location, search_radius, filtered_artists)
 
       
       expect(artists_within_radius).to contain_exactly(artist1, artist2)
@@ -55,9 +55,10 @@ RSpec.describe DistanceService do
       artist1 = create(:artist, location: artist1_location)
       artist2 = create(:artist, location: artist2_location)
 
+      filtered_artists = Artist.all
       
       service = DistanceService.new
-      artists_within_radius = service.all_artists_within_radius(user_location, search_radius)
+      artists_within_radius = service.all_artists_within_radius(user_location, search_radius, filtered_artists)
 
       
       expect(artists_within_radius).to be_empty

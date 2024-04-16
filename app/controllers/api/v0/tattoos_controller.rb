@@ -1,5 +1,14 @@
 class Api::V0::TattoosController < ApplicationController
 
+  def index
+    user = User.find(params[:user_id])
+    artists = DistanceFacade.new(user).get_artists_within_distance(user)
+    tattoos = artists.map do |artist|
+      artist.all_artist_tatts
+    end.flatten
+    render json: TattoosSerializer.new(tattoos)
+  end
+
   def show
     tattoo = Tattoo.find(params[:id])
     render json: TattoosSerializer.new(tattoo)

@@ -1,9 +1,11 @@
 class DistanceService 
 
-  def all_artists_within_radius(user_location, search_radius)
+  def all_artists_within_radius(user_location, search_radius, artists)
     
-    artists = []
-    Artist.all.each do |artist|
+    filtered_artists = []
+    # Artist.all.each do |artist|
+    artists.each do |artist|
+
       
       response = get_url("/maps/api/distancematrix/json?destinations=#{artist.location}&origins=#{user_location}&units=imperial")
      
@@ -13,10 +15,10 @@ class DistanceService
       distance_float = distance_text.gsub(/[^\d.]/, '').to_f
      
       if distance_float <= search_radius
-        artists << artist
+        filtered_artists << artist
       end
     end
-    artists
+    filtered_artists
    
   end
 
