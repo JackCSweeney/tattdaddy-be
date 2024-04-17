@@ -7,13 +7,9 @@ RSpec.describe "Sign Artist Out via DELETE HTTP Request" do
     @headers = {"CONTENT_TYPE" => "application/json"}
 
     @sign_in_params = {
-      sign_in: {
         email: @artist.email,
         password: "Test",
         type: "Sign In as Artist"
-      },
-      controller: "sessions",
-      action: "create"
     }
     @sign_out_params = {artist_id: @artist.id}
     @bad_params = {}

@@ -5,23 +5,15 @@ RSpec.describe "Verify User Info for Sign In via HTTP Request" do
     @artist = create(:artist, password: "Test")
 
     @params_1 = {
-      sign_in: {
         email: @artist.email,
         password: "Test",
         type: "Sign In as Artist"
-      },
-      conroller: "sessions",
-      action: "create"
     }
 
     @params_2 = {
-      sign_in: {
         email: @artist.email,
         password: "WrongPassword",
         type: "Sign In as Artist"
-      },
-      controller: "sessions",
-      action: "create"
     }
 
     @headers = {"CONTENT_TYPE" => "application/json"}

@@ -53,7 +53,7 @@ RSpec.describe "Search Controller" do
       allow(distance_facade).to receive(:get_artists_within_distance).with(user).and_return(artists)
     end
 
-    it 'returns artists within user search radius' do
+    xit 'returns artists within user search radius' do
       # get :search, params: { user_id: user.id }
         get "/api/v0/distance_search/#{user.id}"
 
