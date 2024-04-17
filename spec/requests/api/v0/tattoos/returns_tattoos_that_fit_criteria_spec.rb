@@ -36,5 +36,27 @@ RSpec.describe "Search Controller" do
         
       end
     end
+
+    it 'returns artists within user search radius' do
+      allow(distance_facade).to receive(:get_artists_within_distance).with(user).and_return("not found")
+      artist = artists.first 
+      3.times do
+        Tattoo.create!({artist_id: artist.id, image_url: "/random/url/path", time_estimate: Faker::Number.between(from: 60, to: 180), price: Faker::Number.between(from: 150, to: 500)})
+      end
+    
+      get "/api/v0/tattoos?user_id=#{user.id}"
+      
+      expect(response).to_not have_http_status(:success)
+
+      response_data = JSON.parse(response.body, symbolize_names: true)
+      
+      expect(response_data).to be_a(Hash)
+      expect(response_data).to include(:errors)
+      expect(response_data[:errors]).to be_an(Array)
+      expect(response_data[:errors][0]).to be_a(Hash)
+      expect(response_data[:errors][0]).to include(:detail)
+      expect(response_data[:errors][0][:detail]).to eq("Must have correct location to find tattoos")
+        
+    end
   end
 end
