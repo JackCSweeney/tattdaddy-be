@@ -23,7 +23,7 @@ RSpec.describe DistanceService do
         }
       )
 
-      
+    
       artist1 = create(:artist, location: artist1_location)
       artist2 = create(:artist, location: artist2_location)
 
