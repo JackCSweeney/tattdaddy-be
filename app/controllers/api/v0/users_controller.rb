@@ -27,10 +27,6 @@ class Api::V0::UsersController < ApplicationController
 
   private
 
-  def no_pass_params
-    params.require(:user).permit(:name, :location, :email, :search_radius)
-  end
-
   def user_params
     params.require(:user).permit(:name, :location, :email, :search_radius, :password)
   end

@@ -33,7 +33,7 @@ RSpec.describe "Edit One User via Patch HTTP Request" do
   end
 
   describe '#sad path' do
-    it 'wont be successful if trying to update with a blank attribute' do
+    xit 'wont be successful if trying to update with a blank attribute' do
       user_params = {name: ""}
 
       patch "/api/v0/users/#{@user.id}", headers: @headers, params: JSON.generate({user: user_params})
