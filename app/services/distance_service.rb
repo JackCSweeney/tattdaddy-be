@@ -3,27 +3,24 @@ class DistanceService
   def all_artists_within_radius(user_location, search_radius, artists)
     
     filtered_artists = []
-    # Artist.all.each do |artist|
+    
     artists.each do |artist|
-
-      
       response = get_url("/maps/api/distancematrix/json?destinations=#{artist.location}&origins=#{user_location}&units=imperial")
      
-      
-      
-      distance_text = response[:rows].first[:elements].first[:distance][:text]
-      distance_float = distance_text.gsub(/[^\d.]/, '').to_f
-     
-      if distance_float <= search_radius
-        filtered_artists << artist
+      if response[:rows].first&.dig(:elements, 0, :distance, :text)
+        distance_text = response[:rows].first[:elements].first[:distance][:text]
+        distance_float = distance_text.gsub(/[^\d.]/, '').to_f
+        if distance_float <= search_radius
+          filtered_artists << artist
+        end
+      else
+        filtered_artists = "not found"
       end
     end
     filtered_artists
-   
   end
 
   def get_url(url) 
-   
     response = conn.get(url)
     data = JSON.parse(response.body, symbolize_names: true)
   end
