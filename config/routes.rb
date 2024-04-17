@@ -25,12 +25,15 @@ Rails.application.routes.draw do
       get '/auth/google_oauth2', to: 'sessions#google_oauth2'
       get '/auth/google_oauth2/callback', to: 'sessions#google_oauth2_callback'
 
+      # get "/distance_search", to: "distance_search#search"
+      # get "/distance_search/:user_id", to: "distance_search#search"
+
       resources :artists do 
         resources :tattoos, only: [:index], controller: "artist_tattoos"
         resources :identities, only: [:index, :destroy], controller: "artist_identities"
       end
 
-      resources :tattoos, only: [:show, :create]
+      resources :tattoos, only: [:index, :show, :create, :update, :destroy]
 
       post "/sign_in", to: "sign_in#verify_sign_in"
       delete "/sign_out", to: "sign_out#sign_out"

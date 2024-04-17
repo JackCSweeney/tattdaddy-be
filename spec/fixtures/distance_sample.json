@@ -1,0 +1,26 @@
+{
+  "destination_addresses": [
+      "73 Vía Jodi, Gustine, CA 95322, USA"
+  ],
+  "origin_addresses": [
+      "22012 G St, Crows Landing, CA 95313, USA"
+  ],
+  "rows": [
+      {
+          "elements": [
+              {
+                  "distance": {
+                      "text": "10.8 mi",
+                      "value": 17356
+                  },
+                  "duration": {
+                      "text": "16 mins",
+                      "value": 973
+                  },
+                  "status": "OK"
+              }
+          ]
+      }
+  ],
+  "status": "OK"
+}
