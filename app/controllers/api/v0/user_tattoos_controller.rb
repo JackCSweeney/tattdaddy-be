@@ -6,7 +6,11 @@ class Api::V0::UserTattoosController < ApplicationController
   end
 
   def create 
-    user_tattoo = UserTattoo.create!(user_tattoo_params)
+    if params[:user_tattoo][:type] == "like"
+      user_tattoo = UserTattoo.create!(user_tattoo_params.merge(status: "liked"))
+    else
+      user_tattoo = UserTattoo.create!(user_tattoo_params.merge(status: "disliked"))
+    end
     render json: {message: "Tattoo successfully added to User"}
   end
 
