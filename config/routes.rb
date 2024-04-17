@@ -21,14 +21,16 @@ Rails.application.routes.draw do
 
       delete "/user_tattoos", to: "user_tattoos#destroy"
       
-      get "/distance_search", to: "distance_search#search"
+      # get "/distance_search", to: "distance_search#search"
+      # get "/distance_search/:user_id", to: "distance_search#search"
+
       
       resources :artists do 
         resources :tattoos, only: [:index], controller: "artist_tattoos"
         resources :identities, only: [:index, :destroy], controller: "artist_identities"
       end
 
-      resources :tattoos, only: [:show, :create, :update, :destroy]
+      resources :tattoos, only: [:index, :show, :create, :update, :destroy]
 
       post "/sign_in", to: "sign_in#verify_sign_in"
       delete "/sign_out", to: "sign_out#sign_out"
