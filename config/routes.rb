@@ -23,9 +23,6 @@ Rails.application.routes.draw do
       
       get '/auth/:provider/callback', to: 'sessions#create'
 
-      # get "/distance_search", to: "distance_search#search"
-      # get "/distance_search/:user_id", to: "distance_search#search"
-
       resources :artists do 
         resources :tattoos, only: [:index], controller: "artist_tattoos"
         resources :identities, only: [:index, :destroy], controller: "artist_identities"
