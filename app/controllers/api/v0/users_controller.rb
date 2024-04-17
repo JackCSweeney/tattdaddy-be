@@ -12,7 +12,11 @@ class Api::V0::UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    user.update!(user_params)
+    user.email = params[:user][:email] if params[:user][:email]
+    user.name = params[:user][:name] if params[:user][:name]
+    user.location = params[:user][:location] if params[:user][:location]
+    user.search_radius = params[:user][:search_radius] if params[:user][:search_radius]
+    user.save!(validate: false)
     render json: UserSerializer.new(user), status: 201 
   end
 
@@ -22,6 +26,10 @@ class Api::V0::UsersController < ApplicationController
   end
 
   private
+
+  def no_pass_params
+    params.require(:user).permit(:name, :location, :email, :search_radius)
+  end
 
   def user_params
     params.require(:user).permit(:name, :location, :email, :search_radius, :password)
