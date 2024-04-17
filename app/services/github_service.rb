@@ -47,6 +47,3 @@ class GithubService
     end
   end
 end
-
-
-  # /login/oauth/authorize
