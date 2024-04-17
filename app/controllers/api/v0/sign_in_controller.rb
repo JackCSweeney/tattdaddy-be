@@ -17,7 +17,7 @@ class Api::V0::SignInController < ApplicationController
   private
 
   def sign_in_params
-    params.require(:sign_in).permit(:email, :password, :type)
+    params.permit(:email, :password, :type)
   end
 
 end
