@@ -37,7 +37,7 @@ class GithubService
 
     if User.find_by(uid: data[:id])
       user = User.find_by(uid: data[:id])
-      jwt_token = JWT.encode({attributes: { user_id: user.id, uid: user.uid, email: user.email, name: user.name, location: user.location }}, ENV['JWT_SECRET'], 'HS256')
+      jwt_token = JWT.encode({attributes: { user_id: user.id, uid: user.uid, email: user.email, name: user.name, location: user.location, search_radius: user.search_radius }}, ENV['JWT_SECRET'], 'HS256')
     else
       user = User.new( {uid: data[:id], name: data[:name], location: data[:location].presence || "Unknown", email: data[:email].presence || "Unknown"})
       user.token = access_token

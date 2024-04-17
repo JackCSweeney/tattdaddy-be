@@ -16,13 +16,9 @@ RSpec.describe "Can Sign Out User via DELETE HTTP Request" do
     @headers = {"CONTENT_TYPE" => "application/json"}
 
     @sign_in_params = {
-      sign_in: {
         email: @user.email,
         password: "Test",
         type: "Sign In as User"
-      },
-      controller: "sessions",
-      action: "create"
     }
     @sign_out_params = {user_id: @user.id}
     @bad_params = {}
