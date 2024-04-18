@@ -22,6 +22,7 @@ RSpec.describe "endpoint get /api/v0/artists" do
         check_hash_structure(artist[:attributes], :name, String)
         check_hash_structure(artist[:attributes], :location, String)
         check_hash_structure(artist[:attributes], :email, String)
+        check_hash_structure(artist[:attributes], :scheduling_link, String)
       end
     end
   end 
