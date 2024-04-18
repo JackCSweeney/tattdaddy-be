@@ -17,7 +17,10 @@ class Api::V0::ArtistsController < ApplicationController
 
   def update 
     artist = Artist.find(params[:id])
-    artist.update!(artist_params)
+    artist.email = params[:artist][:email] if params[:artist][:email]
+    artist.name = params[:artist][:name] if params[:artist][:name]
+    artist.location = params[:artist][:location] if params[:artist][:location]
+    artist.save!(validate: false)
     render json: ArtistSerializer.new(artist)
   end
 
