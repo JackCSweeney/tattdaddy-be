@@ -34,11 +34,11 @@ end
 identities = Identity.all
 
 # create artists
-Artist.create!({name: "Hugh Jalligator", email: "hugh@jalligator.com", location: "1453 Swamp Ln, Los Angeles, CA 90032", password: "FakePassword1!"})
-Artist.create!({name: "Doug Dimmadome", email: "doug@dimmadome.com", location: "356 Dome St, Los Angeles, CA 90032", password: "FakePassword1!"})
-Artist.create!({name: "Greg Leggington", email: "greg@leggington.com", location: "154 Field Goal St, Los Angeles, CA 90032", password: "FakePassword1!"})
-Artist.create!({name: "Tom Maybe", email: "tom@maybe.com", location: "987 Hand Egg Circle, Los Angeles, CA 90032", password: "FakePassword1!"})
-Artist.create!({name: "Ivy Running", email: "ivy@running.com", location: "45 Marathon Rd, Los Angeles, CA 90032", password: "FakePassword1!"})
+Artist.create!({name: "Hugh Jalligator", email: "hugh@jalligator.com", location: "1453 Swamp Ln, Los Angeles, CA 90032", password: "FakePassword1!", scheduling_link: "link/path"})
+Artist.create!({name: "Doug Dimmadome", email: "doug@dimmadome.com", location: "356 Dome St, Los Angeles, CA 90032", password: "FakePassword1!", scheduling_link: "link/path"})
+Artist.create!({name: "Greg Leggington", email: "greg@leggington.com", location: "154 Field Goal St, Los Angeles, CA 90032", password: "FakePassword1!", scheduling_link: "link/path"})
+Artist.create!({name: "Tom Maybe", email: "tom@maybe.com", location: "987 Hand Egg Circle, Los Angeles, CA 90032", password: "FakePassword1!", scheduling_link: "link/path"})
+Artist.create!({name: "Ivy Running", email: "ivy@running.com", location: "45 Marathon Rd, Los Angeles, CA 90032", password: "FakePassword1!", scheduling_link: "link/path"})
 
 artists = Artist.all
 
