@@ -61,9 +61,6 @@ RSpec.describe DistanceFacade do
       response_data = DistanceFacade.new(@user).get_artists_within_distance(@user)
       expect(response_data).to eq([])
     end
-
-
-
     it "returns only artists within search radius" do
       # this should be the correct endpoint needed from: https://developers.google.com/maps/documentation/distance-matrix/start
       artist2 = create(:artist, location: "1900 S Central Ave Los Angeles, CA 90011, USA")
