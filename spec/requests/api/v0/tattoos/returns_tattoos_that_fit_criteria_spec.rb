@@ -26,12 +26,15 @@ RSpec.describe "Search Controller" do
 
         check_hash_structure(tattoo_data, :id, String)
         check_hash_structure(tattoo_data, :attributes, Hash)
+        check_hash_structure(tattoo_data[:attributes], :artist, Hash)
 
         attribute = tattoo_data[:attributes]
           expect(attribute).to have_key(:price)
           expect(attribute).to have_key(:artist_id)
           expect(attribute).to have_key(:time_estimate)
           expect(attribute).to have_key(:image_url)
+          expect(attribute).to have_key(:artist)
+          expect(attribute[:artist]).to have_key(:scheduling_link)
         
       end
     end

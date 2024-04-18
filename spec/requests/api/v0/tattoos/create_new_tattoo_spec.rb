@@ -25,6 +25,7 @@ RSpec.describe 'Create New Tattoo via POST HTTP Request' do
       expect(attributes[:price]).to eq(@params[:price])
       expect(attributes[:time_estimate]).to eq(@params[:time_estimate])
       expect(attributes[:artist_id]).to eq(@params[:artist_id])
+      expect(attributes[:artist][:scheduling_link]).to eq(@artist.scheduling_link)
     end
   end
 

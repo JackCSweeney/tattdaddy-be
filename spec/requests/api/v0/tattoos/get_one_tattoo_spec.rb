@@ -23,6 +23,7 @@ RSpec.describe "Get One Tattoo via GET HTTP Request" do
 
       check_hash_structure(tattoo_data, :id, String)
       check_hash_structure(tattoo_data, :attributes, Hash)
+      check_hash_structure(tattoo_data[:attributes], :artist, Hash)
 
       attributes = tattoo_data[:attributes]
 
@@ -30,6 +31,7 @@ RSpec.describe "Get One Tattoo via GET HTTP Request" do
       expect(attributes[:artist_id]).to eq(@tattoo.artist_id)
       expect(attributes[:time_estimate]).to eq(@tattoo.time_estimate)
       expect(attributes[:image_url]).to eq(@tattoo.image_url)
+      expect(attributes[:artist][:scheduling_link]).to eq(@artist.scheduling_link)
     end
   end
 

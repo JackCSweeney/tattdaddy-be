@@ -19,7 +19,7 @@ RSpec.describe "end point get /api/v0/artists/:id/tattoos" do
       expect(response).to be_successful
 
       tattoos = JSON.parse(response.body, symbolize_names: true)
-      
+
       expect(tattoos[:data].count).to eq(3)
      
       tattoos[:data].each do |tattoo|
@@ -29,6 +29,7 @@ RSpec.describe "end point get /api/v0/artists/:id/tattoos" do
         check_hash_structure(tattoo[:attributes], :time_estimate, Integer)
         check_hash_structure(tattoo[:attributes], :artist_id, Integer)
         check_hash_structure(tattoo[:attributes], :image_url, String)
+        check_hash_structure(tattoo[:attributes][:artist], :scheduling_link, String)
       end 
     end
 
