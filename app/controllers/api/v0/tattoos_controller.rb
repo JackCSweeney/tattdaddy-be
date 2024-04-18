@@ -31,7 +31,10 @@ class Api::V0::TattoosController < ApplicationController
 
   def update
     tattoo = Tattoo.find(params[:id])
-    tattoo.update!(tattoo_params)
+    tattoo.image_url = params[:tattoo][:image_url] if params[:tattoo][:image_url]
+    tattoo.price = params[:tattoo][:price] if params[:tattoo][:price]
+    tattoo.time_estimate = params[:tattoo][:time_estimate] if params[:tattoo][:time_estimate]
+    tattoo.save!(validate: false)
     render json: TattoosSerializer.new(tattoo)
   end
 

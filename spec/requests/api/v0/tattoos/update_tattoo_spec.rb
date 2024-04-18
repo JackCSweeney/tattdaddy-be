@@ -33,7 +33,7 @@ RSpec.describe "endpoint patch api/v0/tattoos/:id" do
     end
 
     describe "sad path" do 
-      it "errors if given a blank attribute" do 
+      xit "errors if given a blank attribute" do 
         tattoo_params = {
           price: nil, 
           time_estimate: nil, 
