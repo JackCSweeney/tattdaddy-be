@@ -46,6 +46,6 @@ class Api::V0::TattoosController < ApplicationController
   private
 
   def tattoo_params
-    params.permit(:artist_id, :image_url, :price, :time_estimate)
+    params.require(:tattoo).permit(:artist_id, :image_url, :price, :time_estimate)
   end
 end
