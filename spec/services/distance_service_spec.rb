@@ -23,7 +23,7 @@ RSpec.describe DistanceService do
         }
       )
 
-      
+    
       artist1 = create(:artist, location: artist1_location)
       artist2 = create(:artist, location: artist2_location)
 
@@ -62,6 +62,33 @@ RSpec.describe DistanceService do
 
       
       expect(artists_within_radius).to be_empty
+    end
+    it 'returns not found for bad address' do
+      
+      allow_any_instance_of(DistanceService).to receive(:get_url).and_return(
+        {
+          rows: [
+            {
+              "elements": [
+                {
+                    "status": "NOT_FOUND"
+                }
+              ]
+            }
+          ]
+        }
+      )
+
+      
+      artist1 = create(:artist, location: artist1_location)
+      artist2 = create(:artist, location: artist2_location)
+
+      filtered_artists = Artist.all
+      service = DistanceService.new
+      artists_within_radius = service.all_artists_within_radius(user_location, search_radius, filtered_artists)
+
+      
+      expect(artists_within_radius).to eq("not found")
     end
   end
 end
