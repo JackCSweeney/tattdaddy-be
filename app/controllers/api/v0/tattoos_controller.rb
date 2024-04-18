@@ -1,7 +1,7 @@
 class Api::V0::TattoosController < ApplicationController
 
   def index
-    user = User.find(params[:user_id])
+    user = User.find(params[:user])
     artists = DistanceFacade.new(user).get_artists_within_distance(user)
     if artists != "not found"
       tattoos = artists.map do |artist| artist.all_artist_tatts end.flatten
