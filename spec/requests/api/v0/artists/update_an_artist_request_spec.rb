@@ -20,7 +20,8 @@ RSpec.describe "endpoint patch api/v0/artists/:id" do
         name: "Ted Lasso",
         location: "Pacific Ocean",
         email: "[tatart@gmail.com](mailto:tatart@gmail.com)",
-        password: "FakerPassowrd1"
+        password: "FakerPassowrd1",
+        scheduling_link: "https://www.the_best_website_ever.com"
       }
 
       patch "/api/v0/artists/#{@artist.id}", params: JSON.generate({ artist: artist_params }), headers: @headers
@@ -31,6 +32,7 @@ RSpec.describe "endpoint patch api/v0/artists/:id" do
       expect(artist[:attributes][:name]).to eq("Ted Lasso")
       check_hash_structure(artist[:attributes], :location, String)
       check_hash_structure(artist[:attributes], :email, String)
+      check_hash_structure(artist[:attributes], :scheduling_link, String)
     end
 
     describe "sad path" do 
@@ -39,7 +41,8 @@ RSpec.describe "endpoint patch api/v0/artists/:id" do
           name: "",
           location: "Pacific Ocean",
           email: "",
-          password: "FakerPassowrd1"
+          password: "FakerPassowrd1",
+          scheduling_link: ""
         }
 
         patch "/api/v0/artists/#{@artist.id}", params: JSON.generate({ artist: artist_params }), headers: @headers
@@ -49,7 +52,7 @@ RSpec.describe "endpoint patch api/v0/artists/:id" do
         expect(response.status).to eq(404)
         
         expect(data[:errors]).to be_a(Array)
-        expect(data[:errors].first[:detail]).to eq("Validation failed: Name can't be blank, Email can't be blank")
+        expect(data[:errors].first[:detail]).to eq("Validation failed: Name can't be blank, Email can't be blank, Scheduling link can't be blank")
       end
 
       it "errors on an invalid id" do 
@@ -59,7 +62,8 @@ RSpec.describe "endpoint patch api/v0/artists/:id" do
         name: "Ted Lasso",
         location: "Pacific Ocean",
         email: "[tatart@gmail.com](mailto:tatart@gmail.com)",
-        password: "FakerPassowrd1"
+        password: "FakerPassowrd1",
+        scheduling_link: "https://www.the_best_website_ever.com"
       }
 
         patch "/api/v0/artists/#{id}", params: JSON.generate({ artist: artist_params }), headers: @headers
