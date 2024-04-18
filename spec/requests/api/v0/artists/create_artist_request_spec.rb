@@ -19,7 +19,8 @@ RSpec.describe "endpoint post api/v0/artists" do
         name: "Ted Lasso",
         location: "Pacific Ocean",
         email: "[tatart@gmail.com](mailto:tatart@gmail.com)",
-        password: "FakerPassowrd1"
+        password: "FakerPassowrd1",
+        scheduling_link: "http://www.website.com"
       }
 
       post "/api/v0/artists", params: JSON.generate({ artist: artist_params }), headers: @headers
@@ -31,6 +32,7 @@ RSpec.describe "endpoint post api/v0/artists" do
       check_hash_structure(artist[:attributes], :name, String)
       check_hash_structure(artist[:attributes], :location, String)
       check_hash_structure(artist[:attributes], :email, String)
+      check_hash_structure(artist[:attributes], :scheduling_link, String)
     end
 
     describe "sad path" do 
@@ -39,7 +41,8 @@ RSpec.describe "endpoint post api/v0/artists" do
           name: "",
           location: "Pacific Ocean",
           email: "",
-          password: "FakerPassowrd1"
+          password: "FakerPassowrd1",
+          scheduling_link: ""
         }
 
         post "/api/v0/artists", params: JSON.generate({ artist: artist_params }), headers: @headers
@@ -47,9 +50,9 @@ RSpec.describe "endpoint post api/v0/artists" do
 
         expect(response).to_not be_successful
         expect(response.status).to eq(404)
-        
+
         expect(data[:errors]).to be_a(Array)
-        expect(data[:errors].first[:detail]).to eq("Validation failed: Name can't be blank, Email can't be blank")
+        expect(data[:errors].first[:detail]).to eq("Validation failed: Name can't be blank, Email can't be blank, Scheduling link can't be blank")
       end
     end
   end 
