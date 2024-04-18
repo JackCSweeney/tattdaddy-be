@@ -20,7 +20,7 @@ RSpec.describe "endpoint patch api/v0/tattoos/:id" do
         image_url: "test/url/path"
       }
 
-      patch "/api/v0/tattoos/#{@tattoo.id}", headers: @headers, params: JSON.generate({ tattoo: tattoo_params })
+      patch "/api/v0/tattoos/#{@tattoo.id}", headers: @headers, params: JSON.generate(tattoo_params)
 
       tattoo = JSON.parse(response.body, symbolize_names: true)[:data]
 
@@ -41,7 +41,7 @@ RSpec.describe "endpoint patch api/v0/tattoos/:id" do
           image_url: ""
         }
 
-        patch "/api/v0/tattoos/#{@tattoo.id}", params: JSON.generate({ tattoo: tattoo_params }), headers: @headers
+        patch "/api/v0/tattoos/#{@tattoo.id}", params: JSON.generate(tattoo_params), headers: @headers
         data = JSON.parse(response.body, symbolize_names: true)
 
         expect(response).to_not be_successful
