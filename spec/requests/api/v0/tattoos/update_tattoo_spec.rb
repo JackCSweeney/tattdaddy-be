@@ -30,6 +30,8 @@ RSpec.describe "endpoint patch api/v0/tattoos/:id" do
       expect(tattoo[:attributes][:time_estimate]).to eq(90)
       check_hash_structure(tattoo[:attributes], :image_url, String)
       check_hash_structure(tattoo[:attributes], :artist_id, Integer)
+      check_hash_structure(tattoo[:attributes], :artist, Hash)
+      expect(tattoo[:attributes][:artist][:scheduling_link]).to eq(@artist.scheduling_link)
     end
 
     describe "sad path" do 

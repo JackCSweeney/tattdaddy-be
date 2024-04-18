@@ -1,4 +1,4 @@
 class TattoosSerializer
   include JSONAPI::Serializer
-  attributes :image_url, :price, :time_estimate, :artist_id
+  attributes :image_url, :price, :time_estimate, :artist_id, :artist
 end
