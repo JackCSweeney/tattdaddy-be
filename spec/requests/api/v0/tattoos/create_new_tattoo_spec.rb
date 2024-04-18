@@ -37,8 +37,8 @@ RSpec.describe 'Create New Tattoo via POST HTTP Request' do
 
       error = JSON.parse(response.body, symbolize_names: true)
 
-      expect(error).to have_key(:error)
-      expect(error[:error]).to eq("Tattoo could not be uploaded")
+      expect(error).to have_key(:errors)
+      expect(error[:errors].first[:detail]).to eq("Validation failed: Image url can't be blank")
     end
   end
 end

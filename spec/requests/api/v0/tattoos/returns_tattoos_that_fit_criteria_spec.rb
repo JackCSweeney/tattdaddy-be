@@ -17,6 +17,7 @@ RSpec.describe "Search Controller" do
       3.times do
         Tattoo.create!({artist_id: artist.id, image_url: "/random/url/path", time_estimate: Faker::Number.between(from: 60, to: 180), price: Faker::Number.between(from: 150, to: 500)})
       end
+
       get "/api/v0/tattoos?user=#{user.id}"
       
       expect(response).to have_http_status(:success)

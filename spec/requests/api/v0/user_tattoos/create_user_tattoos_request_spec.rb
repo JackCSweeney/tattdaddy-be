@@ -30,7 +30,7 @@ RSpec.describe "endpoint post /api/v0/user_tattoos" do
     end
 
     it "creates a user tattoos relation with 'liked' status via HTTP request" do
-      post "/api/v0/user_tattoos", params: JSON.generate(user_tattoo: @params_1), headers: @headers
+      post "/api/v0/user_tattoos", params: JSON.generate(@params_1), headers: @headers
 
       new_user_tattoo = UserTattoo.last 
       
@@ -45,7 +45,7 @@ RSpec.describe "endpoint post /api/v0/user_tattoos" do
     end
 
     it "creates a user tattoos relation with 'disliked' status via HTTP request" do
-      post "/api/v0/user_tattoos", params: JSON.generate(user_tattoo: @params_2), headers: @headers
+      post "/api/v0/user_tattoos", params: JSON.generate(@params_2), headers: @headers
 
       new_user_tattoo = UserTattoo.last 
       
@@ -61,9 +61,9 @@ RSpec.describe "endpoint post /api/v0/user_tattoos" do
 
     describe "Sad Path" do 
       it "sends an error when a relation between User and Tattoo already exists" do 
-        post "/api/v0/user_tattoos", params: JSON.generate(user_tattoo: @params_1), headers: @headers
+        post "/api/v0/user_tattoos", params: JSON.generate(@params_1), headers: @headers
         
-        post "/api/v0/user_tattoos", params: JSON.generate(user_tattoo: @params_1), headers: @headers
+        post "/api/v0/user_tattoos", params: JSON.generate(@params_1), headers: @headers
         
         expect(response).not_to be_successful
         expect(response.status).to eq(422)
