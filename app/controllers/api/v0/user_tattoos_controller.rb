@@ -6,7 +6,7 @@ class Api::V0::UserTattoosController < ApplicationController
   end
 
   def create 
-    if params[:user_tattoo][:type] == "like"
+    if params[:type] == "like"
       user_tattoo = UserTattoo.create!(user_tattoo_params.merge(status: "liked"))
     else
       user_tattoo = UserTattoo.create!(user_tattoo_params.merge(status: "disliked"))
@@ -26,6 +26,6 @@ class Api::V0::UserTattoosController < ApplicationController
   private 
 
   def user_tattoo_params
-    params.require(:user_tattoo).permit(:user_id, :tattoo_id)
+    params.permit(:user_id, :tattoo_id)
   end
 end

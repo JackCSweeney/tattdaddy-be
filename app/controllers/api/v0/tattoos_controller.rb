@@ -4,7 +4,11 @@ class Api::V0::TattoosController < ApplicationController
     user = User.find(params[:user])
     artists = DistanceFacade.new(user).get_artists_within_distance(user)
     if artists != "not found"
-      tattoos = artists.map do |artist| artist.all_artist_tatts end.flatten
+      tattoos = artists.map do |artist| 
+        artist.all_artist_tatts 
+      end.flatten
+
+      tattoos = tattoos - (user.tattoos)
       render json: TattoosSerializer.new(tattoos)
     else
       render json: {"errors": [{"detail": "Must have correct location to find tattoos"}]}, status: 404
