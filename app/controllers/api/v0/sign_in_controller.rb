@@ -1,7 +1,6 @@
 class Api::V0::SignInController < ApplicationController
 
   def verify_sign_in
-    # require 'pry' ; binding.pry
     if sign_in_params[:type].include?("User")
       login = User.find_by(email: sign_in_params[:email])
     else
