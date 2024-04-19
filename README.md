@@ -1,4 +1,6 @@
-# TattDaddy
+<!-- # TattDaddy -->
+
+![alt text|](image.png)
 
 ## Table of Contents
 - [Getting Started](#getting-started)
@@ -183,7 +185,7 @@ Body:
 	"location":"223 S Amazon Dr., Indianapolis, IN, 46259",
 	"email":"test@email.com",
 	"search_radius":20,
-	"password":"unreadable_hash"
+	"password": null
   }
 }
 ```
@@ -221,7 +223,7 @@ Response: `status: 204`
 </details>
 
 <details>
-<summary> Get User's (Liked) Tattoos </summar>
+<summary> Get User's (Liked) Tattoos </summary>
 Request:
 
 ```http
@@ -242,7 +244,17 @@ Response: `status: 200`
         "image_url": "https://gist.github.com/assets/149989113/379ece3d-6f4e-40d6-b7c4-47920d62ddfa",
         "price": 315,
         "time_estimate": 85,
-        "artist_id": 0
+        "artist_id": 0,
+        "artist": {
+            "id": 5,
+            "name": "Ivy Running",
+            "email": "ivy@running.com",
+            "password_digest": null,
+            "location": "45 Marathon Rd, Los Angeles, CA 90032",
+            "created_at": "2024-04-19T00:23:41.504Z",
+            "updated_at": "2024-04-19T00:23:41.504Z",
+            "scheduling_link": "www.google.com"
+        }
       }
     },
     {
@@ -252,7 +264,17 @@ Response: `status: 200`
         "image_url": "https://gist.github.com/assets/149989113/66a957cb-a6ef-4967-b049-dc6694022cf2",
         "price": 350,
         "time_estimate": 60,
-        "artist_id": 5
+        "artist_id": 5,
+        "artist": {
+            "id": 5,
+            "name": "Ivy Running",
+            "email": "ivy@running.com",
+            "password_digest": null,
+            "location": "45 Marathon Rd, Los Angeles, CA 90032",
+            "created_at": "2024-04-19T00:23:41.504Z",
+            "updated_at": "2024-04-19T00:23:41.504Z",
+            "scheduling_link": "www.google.com"
+        }
       }
     },
     {
@@ -262,7 +284,17 @@ Response: `status: 200`
         "image_url": "https://gist.github.com/assets/149989113/ad31388d-2480-49c3-b270-f4adcf6b7f9d",
         "price": 280,
         "time_estimate": 12,
-        "artist_id": 8
+        "artist_id": 8,
+        "artist": {
+            "id": 5,
+            "name": "Ivy Running",
+            "email": "ivy@running.com",
+            "password_digest": null,
+            "location": "45 Marathon Rd, Los Angeles, CA 90032",
+            "created_at": "2024-04-19T00:23:41.504Z",
+            "updated_at": "2024-04-19T00:23:41.504Z",
+            "scheduling_link": "www.google.com"
+        }
       }
     },
     {
@@ -272,7 +304,17 @@ Response: `status: 200`
         "image_url": "https://gist.github.com/assets/149989113/176b3ee5-22d9-4561-818b-e80c0fd36307",
         "price": 335,
         "time_estimate": 80,
-        "artist_id": 8
+        "artist_id": 8,
+        "artist": {
+            "id": 5,
+            "name": "Ivy Running",
+            "email": "ivy@running.com",
+            "password_digest": null,
+            "location": "45 Marathon Rd, Los Angeles, CA 90032",
+            "created_at": "2024-04-19T00:23:41.504Z",
+            "updated_at": "2024-04-19T00:23:41.504Z",
+            "scheduling_link": "www.google.com"
+        }
       }
     },
     {
@@ -282,13 +324,25 @@ Response: `status: 200`
         "image_url": "https://gist.github.com/assets/149989113/51cbb0a7-7d92-4835-b180-5ed250d2e815",
         "price": 245,
         "time_estimate": 75,
-        "artist_id": 8
+        "artist_id": 8,
+        "artist": {
+            "id": 5,
+            "name": "Ivy Running",
+            "email": "ivy@running.com",
+            "password_digest": null,
+            "location": "45 Marathon Rd, Los Angeles, CA 90032",
+            "created_at": "2024-04-19T00:23:41.504Z",
+            "updated_at": "2024-04-19T00:23:41.504Z",
+            "scheduling_link": "www.google.com"
+        }
       }
     }
   ]
 }
 ```
-#### Create User Tattoo
+
+<details>
+<summary>Create User Tattoo</summary> 
 Request:
 
 ```http
@@ -318,8 +372,10 @@ Response: `status: 200`
 "message": "Tattoo successfully added to User"
 }
 ```
+</details>
 
-#### Delete User Tattoo
+<details>
+<summary> Delete User Tattoo</summary> 
 Request:
 
 ```http
@@ -341,8 +397,10 @@ Body:
 ```
 
 Response: `status: 204`
+</details>
 
-#### Get User's Identities
+<details>
+<summary> Get User's Identities </summary>
 Request:
 
 ```http
@@ -373,8 +431,10 @@ Response: `status: 200`
   ]
 }
 ```
+</details>
 
-#### Create User Identity
+<details>
+<summary> Create User Identity</summary>
 Request:
 
 ```http
@@ -402,7 +462,10 @@ Response: `status: 200`
 "message": "Identity successfully added to User"
 }
 ```
-#### Delete User Identity
+</details>
+
+<details>
+<summary> Delete User Identity</summary>
 Request:
 
 ```http
@@ -427,7 +490,8 @@ Body:
 Response: `status: 204`
 
 ### Artists
-#### Get All
+<details>
+<summary> Get All</summary>
 Request:
 
 ```http
@@ -493,8 +557,10 @@ Response: `status: 200`
   ]
 }
 ```
+</details>
 
-#### Get One
+<details>
+<summary> Get One </summary>
 Request:
 
 ```http
@@ -519,7 +585,10 @@ Response: `status: 200`
   }
 }
 ```
-#### Create Artist
+</details>
+
+<details>
+<summary> Create Artist</summary>
 Request:
 
 ```http
@@ -557,7 +626,10 @@ Response: `status: 200`
   }
 }
 ```
-#### Update Artist
+</details>
+
+<details>
+<summary> Update Artist</summary>
 Request:
 
 ```http
@@ -595,8 +667,10 @@ Response: `status: 200`
   }
 }
 ```
+</details>
 
-#### Delete Artist
+<details>
+<summary>Delete Artist</summary>
 Request:
 
 ```http
@@ -606,7 +680,10 @@ Accept: application/json
 ```
 
 Response: `status: 204`
-#### Get Artist Identities
+</details>
+
+<details>
+<summary>Get Artist Identities</summary>
 Request:
 
 ```http
@@ -637,6 +714,7 @@ Response: `status: 200`
   ]
 }
 ```
+</details>
 
 #### Create Artist Identity
 Request:
@@ -660,6 +738,7 @@ Body:
 ```
 
 Response: `status: 200`
+</details>
 
 #### Delete Artist Identity
 Request:
@@ -684,6 +763,7 @@ Body:
 ```
 
 Response: `status: 204`
+</details>
 
 #### Get Artist's Tattoos
 Request:
@@ -711,7 +791,7 @@ Response: `status: 200`
           "id": 288,
           "name": "Margrett Dare I",
           "email": "tonie@ritchie.test",
-          "password_digest": "$2a$04$ohsFGpdinZ/B.7KPnfIGZuoocVdvIKm/R6ABtxCR00IX8VkrMmf8u",
+          "password_digest": null,
           "location": "90797 Hammes Lodge, Port Junefort, VT 43513",
           "created_at": "2024-04-18T21:38:06.092Z",
           "updated_at": "2024-04-18T21:38:06.092Z",
@@ -731,7 +811,7 @@ Response: `status: 200`
           "id": 288,
           "name": "Margrett Dare I",
           "email": "tonie@ritchie.test",
-          "password_digest": "$2a$04$ohsFGpdinZ/B.7KPnfIGZuoocVdvIKm/R6ABtxCR00IX8VkrMmf8u",
+          "password_digest": null,
           "location": "90797 Hammes Lodge, Port Junefort, VT 43513",
           "created_at": "2024-04-18T21:38:06.092Z",
           "updated_at": "2024-04-18T21:38:06.092Z",
@@ -751,7 +831,7 @@ Response: `status: 200`
           "id": 288,
           "name": "Margrett Dare I",
           "email": "tonie@ritchie.test",
-          "password_digest": "$2a$04$ohsFGpdinZ/B.7KPnfIGZuoocVdvIKm/R6ABtxCR00IX8VkrMmf8u",
+          "password_digest": null,
           "location": "90797 Hammes Lodge, Port Junefort, VT 43513",
           "created_at": "2024-04-18T21:38:06.092Z",
           "updated_at": "2024-04-18T21:38:06.092Z",
@@ -762,8 +842,11 @@ Response: `status: 200`
   ]
 }
 ```
+</details>
+
 ### Tattoos
-#### Get One
+<details>
+<summary> Get One</summary>
 Request:
 
 ```http
@@ -788,8 +871,10 @@ Response: `status: 200`
   }
 }
 ```
+</details>
 
-#### Create Tattoo
+<details>
+<summary>Create Tattoo</summary>
 Request:
 
 ```http
@@ -825,8 +910,10 @@ Response: `status: 200`
   }
 }
 ```
+</details>
 
-#### Update Tattoo
+<details>
+<summary> Update Tattoo</summary>
 Request:
 
 ```http
@@ -864,8 +951,10 @@ Response: `status: 200`
   }
 }
 ```
+</details>
 
-#### Delete Tattoo
+<details>
+<summary>Delete Tattoo</summary>
 Request:
 
 ```http
@@ -875,7 +964,11 @@ Accept: application/json
 ```
 
 Response: `status: 204`
-#### Get All Matching User's Pref $\rightarrow$ Check after done making
+
+</details>
+
+<details>
+<summary> Get All Matching User's Pref $\rightarrow$ Check after done making</summary>
 Request:
 
 ```http
@@ -942,10 +1035,12 @@ Response: `status: 200`
   ]
 }
 ```
+</details>
 
 ### Identities
 
-#### Get All
+<details>
+<summary> Get All</summary>
 
 Request:
 
@@ -1012,7 +1107,10 @@ Response: `status: 200`
   ]
 }
 ```
-### Sign In
+</details>
+
+<details>
+<summary> Sign In</summary>
 Request:
 
 ```http
@@ -1046,8 +1144,10 @@ Response: `status: 200`
   }
 }
 ```
+</details>
 
-### Sign Out
+<details>
+<summary> Sign Out</summary
 Request:
 
 ```http
@@ -1076,4 +1176,4 @@ For a user
 ```
 
 Response: `status: 204`
-
+</details>
