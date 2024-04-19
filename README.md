@@ -6,6 +6,7 @@
 - [Learning Goals for Project](#learning-goals-for-project)
 - [Setup](#setup)
 - [Contributors](#contributors)
+- [FE Repo](https://github.com/JackCSweeney/tattdaddy-fe)
 
 ## Getting Started
 ### Versions
